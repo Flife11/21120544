@@ -3,11 +3,17 @@ body {
     margin: 0;
     padding: 0;
 }
+
+#app {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/*--------------- Header ---------------*/
+
 #header {
     height: 6em;
     background-color: blue;
-    max-width: 1200px;
-    margin: auto;
     text-align: center;
     position: relative;
 }
@@ -16,6 +22,8 @@ h1 {
     margin: 0;
     padding: 20px;
 }
+
+/*--------------- Navbar ---------------*/
 
 #nav {
     background-color: lightblue;;
@@ -35,4 +43,42 @@ h1 {
 
 .menu1 {
     margin-right: 0;
+}
+
+
+/*--------------- Side bar ---------------*/
+
+#side {
+    width: 360px;
+}
+
+.side-container {
+    color: white;
+    background-color: white;
+    border: 1px solid #888888;
+}
+
+.side-container-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: orange;
+    padding: 5px 0;
+}
+
+.play-button {
+    display: none;
+}
+
+.side-container-header-content {
+    font-size: 18px;
+}
+
+.onehead-arrow, .twohead-arrow {
+    padding: 5px;
+}
+
+.side-container-body {
+    color: blue;
+    padding: 5px 10px;
 }
