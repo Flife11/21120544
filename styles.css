@@ -108,28 +108,36 @@ h1 {
 /*--------------- Order ---------------*/
 #order {
     flex-grow: 1;
+    text-align: center;
 }
 
-/*--------------- Info ---------------*/
+/*--------------- Order -> Info ---------------*/
 
-#info {
-    display: flex;
-    gap: 10px;
-}
-
-.title {
+#order-info {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 12px;
-}
-
-.input {
-    display: flex;
-    flex-direction: column;
     gap: 10px;
 }
 
-.sex-wrapper {
+.order-info-wrapper {
     display: flex;
+    align-items: flex-end;
+    padding-right: 5px;
+    gap: 5px;
+}
+
+.order-info-input {
+    display: flex;
+    width: 350px;
+}
+
+input[type="radio"] {
+    margin: auto;
+}
+
+.order-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }

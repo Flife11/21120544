@@ -78,32 +78,44 @@
             </div>
             <div id="order">
                 <h2>ĐĂNG KÝ ĐƠN HÀNG</h2>
-                <div id="info">
-                    <div class="title">
+                <div id="order-info">
+                    <div class="order-info-wrapper">
                         <label for="name">Họ và tên: </label>
-                        <label for="address">Địa chỉ: </label>
-                        <label for="phoneNumber">Điện thoại: </label>
-                        <label for="sex">Giới tính: </label>
-                        <label for="date">Ngày giao hàng: </label>
-                        <label for="email">Email: </label>
+                        <input class="order-info-input" name="name" type="text">
                     </div>
-                    <div class="input">
-                        <input name="name" type="text">
-                        <input name="address" type="text">
-                        <input type="tel" name="phoneNumber">
-                        <div class="sex-wrapper">
-                            <div class="wrapper">
-                                <input type="radio" name="nam">
+                    <div class="order-info-wrapper">
+                        <label for="address">Địa chỉ: </label>
+                        <input class="order-info-input" name="address" type="text">
+                    </div>
+                    <div class="order-info-wrapper">
+                        <label for="phoneNumber">Điện thoại: </label>
+                        <input type="tel" class="order-info-input" name="phoneNumber">
+                    </div>
+                    <div class="order-info-wrapper">
+                        <label for="sex">Giới tính: </label>
+                        <div class="order-info-input">
+                            <div class="order-info-wrapper">
+                                <input type="radio" name="sex">
                                 <label for="nam">Nam</label>
                             </div>
-                            <div class="wrapper">
-                                <input type="radio" name="nu">
+                            <div class="order-info-wrapper">
+                                <input type="radio" name="sex">
                                 <label for="nu">Nữ</label>
                             </div>
                         </div>
-                        <input type="datetime" name="date">
-                        <input type="email" name="email">
                     </div>
+                    <div class="order-info-wrapper">
+                        <label for="date">Ngày giao hàng: </label>
+                        <input type="date" class="order-info-input" name="date">
+                    </div>
+                    <div class="order-info-wrapper">
+                        <label for="email">Email: </label>
+                        <input type="email" class="order-info-input" name="email">
+                    </div>
+                </div>
+                <div class="order-button">
+                    <button>Đăng ký</button>
+                    <button>Xóa hết</button>
                 </div>
             </div>
         </main>
