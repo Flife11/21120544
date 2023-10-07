@@ -1,0 +1,38 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+#header {
+    height: 6em;
+    background-color: blue;
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+    position: relative;
+}
+
+h1 {
+    margin: 0;
+    padding: 20px;
+}
+
+#nav {
+    background-color: lightblue;;
+    max-width: 600px;
+    top: 90%;
+    left: 33%;
+    position: absolute;
+    border-radius: 3px;
+    box-shadow: #888888 0px 0px 10px 2px;
+}
+
+.menu {
+    display: inline-block;
+    margin-right: 30px;
+    padding: 3px;
+}
+
+.menu1 {
+    margin-right: 0;
+}
