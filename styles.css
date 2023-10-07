@@ -98,3 +98,38 @@ h1 {
     color: blue;
     padding: 5px 10px;
 }
+
+/*--------------- Main ---------------*/
+
+#main {
+    display: flex;
+}
+
+/*--------------- Order ---------------*/
+#order {
+    flex-grow: 1;
+}
+
+/*--------------- Info ---------------*/
+
+#info {
+    display: flex;
+    gap: 10px;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sex-wrapper {
+    display: flex;
+}
