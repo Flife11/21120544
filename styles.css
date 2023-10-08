@@ -1,3 +1,10 @@
+:root {
+    --orange: orange;
+    --light-orange: lightsalmon;
+    --blue: blue;
+    --light-blue: lightcyan;
+}
+
 body {
     box-sizing: border-box;
     margin: 0;
@@ -9,13 +16,30 @@ body {
     margin: auto;
 }
 
+#vertical-line {
+    display: block;
+    content: "";
+    background-color: var(--blue);
+    height: inherit;
+    width: 1px;
+    margin-left: 5px;
+}
+
 /*--------------- Header ---------------*/
 
 #header {
     height: 6em;
-    background-color: blue;
+    background-color: var(--blue);
     text-align: center;
     position: relative;
+}
+
+#header::after{
+    display: block;
+    content: "";
+    background-color: var(--blue);
+    height: 1px;
+    margin-top: 45px;
 }
 
 h1 {
@@ -26,7 +50,7 @@ h1 {
 /*--------------- Navbar ---------------*/
 
 #nav {
-    background-color: lightblue;;
+    background-color: var(--light-blue);
     max-width: 600px;
     top: 90%;
     left: 33%;
@@ -46,21 +70,14 @@ h1 {
 }
 
 #main {
-    margin-top: 25px;
-}
-
-#main::before{
-    display: block;
-    content: "";
-    background-color: blue;
-    height: 1px;
-    margin-bottom: 5px;
+    margin-top: 27px;
 }
 
 /*--------------- Side bar ---------------*/
 
 #side {
     width: 360px;
+    padding-top: 5px;
 }
 
 .side-container {
@@ -74,7 +91,7 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: orange;
+    background-color: var(--orange);
     padding: 5px 0;
     user-select: none;
 }
@@ -95,7 +112,7 @@ h1 {
 }
 
 .side-container-body {
-    color: blue;
+    color: var(--blue);
     padding: 5px 10px;
 }
 
@@ -109,6 +126,8 @@ h1 {
 #order {
     flex-grow: 1;
     text-align: center;
+    margin-left: 25px;
+    margin-top: 10px;
 }
 
 /*--------------- Order -> Info ---------------*/
@@ -130,7 +149,7 @@ h1 {
 .order-info-annouce {
     width: 360px;
     text-align: left;
-    color: lightsalmon;
+    color: var(--light-orange);
     display: none;
 }
 
@@ -147,4 +166,97 @@ input[type="radio"] {
     display: flex;
     justify-content: center;
     margin-top: 10px;
+}
+
+/*--------------- Order -> Product ---------------*/
+#order-product {
+    display: flex;
+    margin-top: 10px;
+}
+
+.order-product-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: .5px solid;
+    border-radius: 3px;
+    margin-bottom: 3px;
+}
+
+.order-product-item:hover {
+    cursor: pointer;
+}
+
+.selected {
+    background-color: var(--orange);
+}
+
+.order-product-item-thumnail {
+    font-size: 40px;
+    padding-left: 10px;
+    
+}
+
+.order-product-item-description {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.order-product-item-price {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--orange);
+    padding-right: 5px;
+}
+
+#order-product-list {
+    flex: 8;
+}
+
+.order-product-list-title {
+    color: var(--light-orange);
+    text-align: right;
+}
+
+#order-product-list-wrapper {
+    height: 350px;
+    border: .5px solid;
+    padding: 3px;
+    overflow-y: scroll;
+}
+
+#order-product-button {
+    flex: 1;
+}
+
+#order-product-selected {
+    flex: 8;
+}
+
+.order-product-selected-title {
+    color: var(--light-orange);
+    text-align: left;
+}
+
+#order-product-selected-wrapper {
+    height: 350px;
+    border: .5px solid;
+    padding: 3px;
+    overflow-y: scroll;
+    background-color: var(--light-blue);
+    border: .5px solid var(--light-orange);
+}
+
+#order-product-button {
+    text-align: center;
+    margin: auto;
+}
+
+.order-product-button-item {
+    border: 2px solid var(--light-orange);
+    margin: 5px 8px;
+}
+
+.order-product-button-item:hover {
+    cursor: pointer;
 }

@@ -12,7 +12,6 @@ export function handleDragOver(e)
 
 export function handleDrop(e)
 {
-    console.log(this.children)
     var id = e.dataTransfer.getData("text");
     var item = document.getElementById(id);
     var curItem = this.children[0];
