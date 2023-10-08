@@ -1,4 +1,5 @@
 import * as side from "./side.js";
+import * as info from "./info.js";
 
 function sidebarEvent()
 {
@@ -20,4 +21,13 @@ function sidebarEvent()
     });
 }
 
+
+function buttonEvent()
+{
+    var registerButton = document.getElementById("order-button-register");
+    registerButton.addEventListener("click", info.handleValidInfo);
+}
+
+
 sidebarEvent();
+buttonEvent();
