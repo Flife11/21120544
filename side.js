@@ -21,14 +21,17 @@ export function handleDrop(e)
 
 export function handleClick(e)
 {
-    if (this.children[0].style.display == "none") {
+    var oneheadArrow = getComputedStyle(this.children[0]);
+    if (oneheadArrow.display == "none") {
         this.children[0].style.display = "block";
         this.children[1].style.display = "none";
         this.nextElementSibling.style.display = "block";
+        this.classList.remove("side-container-header-newcolor");
     } else {
         this.children[0].style.display = "none";
         this.children[1].style.display = "block";
         this.nextElementSibling.style.display = "none";
+        this.classList.add("side-container-header-newcolor");
     }
 
 }

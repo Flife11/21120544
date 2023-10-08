@@ -1,6 +1,15 @@
+import * as nav from "./nav.js";
 import * as side from "./side.js";
 import * as info from "./info.js";
 import * as product from "./product.js";
+
+function navbarEvent()
+{
+    const menuList = document.querySelectorAll(".nav-menu");
+    menuList.forEach(element => {
+        element.addEventListener("click", nav.handleClick);
+    });
+}
 
 function sidebarEvent()
 {
@@ -58,6 +67,7 @@ function productEvent()
 
 }
 
+navbarEvent();
 sidebarEvent();
 buttonEvent();
 productEvent();

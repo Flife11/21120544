@@ -1,10 +1,3 @@
-:root {
-    --orange: orange;
-    --light-orange: lightsalmon;
-    --blue: blue;
-    --light-blue: lightcyan;
-}
-
 body {
     box-sizing: border-box;
     margin: 0;
@@ -16,20 +9,30 @@ body {
     margin: auto;
 }
 
-#vertical-line {
+.vertical-line {
     display: block;
     content: "";
-    background-color: var(--blue);
+    background-color: rgb(61, 105, 108);
     height: inherit;
     width: 1px;
     margin-left: 5px;
+
+}
+
+.horizontal-line {
+    display: block;
+    content: "";
+    width: inherit;
+    height: 1px;
+    background-color: rgb(154,154,154);
+    margin-top: 10px;
 }
 
 /*--------------- Header ---------------*/
 
 #header {
     height: 6em;
-    background-color: var(--blue);
+    background: linear-gradient(rgb(98, 149, 232), rgb(140, 183, 249));
     text-align: center;
     position: relative;
 }
@@ -37,12 +40,13 @@ body {
 #header::after{
     display: block;
     content: "";
-    background-color: var(--blue);
-    height: 1px;
+    background-color: rgb(61, 105, 108);
+    height: .5px;
     margin-top: 45px;
 }
 
 h1 {
+    color: rgb(194, 233, 249);
     margin: 0;
     padding: 20px;
 }
@@ -50,22 +54,32 @@ h1 {
 /*--------------- Navbar ---------------*/
 
 #nav {
-    background-color: var(--light-blue);
+    background-color: rgb(189, 210, 248);
     max-width: 600px;
     top: 90%;
     left: 33%;
     position: absolute;
     border-radius: 3px;
     box-shadow: #888888 0px 0px 10px 2px;
+    color: rgb(61, 105, 208);
 }
 
-.menu {
+.nav-menu {
     display: inline-block;
     margin-right: 30px;
     padding: 3px;
 }
 
-.menu1 {
+.nav-menu:hover {
+    cursor: pointer;
+    color: rgb(246, 219, 182);
+}
+
+.nav-selected {
+    color: rgb(246, 219, 182);
+}
+
+.nav-menu1 {
     margin-right: 0;
 }
 
@@ -91,10 +105,16 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--orange);
+    background-color: rgb(233, 144, 49);
     padding: 5px 0;
     user-select: none;
 }
+
+.side-container-header-newcolor {
+    background-color: rgb(246, 219, 182);
+    color: rgb(180, 163, 173);
+}
+
 .side-container-header:hover {
     cursor: pointer;
 }
@@ -104,7 +124,7 @@ h1 {
 }
 
 .side-container-header-content {
-    font-size: 18px;
+    font-size: 21px;
 }
 
 .onehead-arrow, .twohead-arrow, .play-button {
@@ -112,7 +132,7 @@ h1 {
 }
 
 .side-container-body {
-    color: var(--blue);
+    color: blue;
     padding: 5px 10px;
 }
 
@@ -128,6 +148,20 @@ h1 {
     text-align: center;
     margin-left: 25px;
     margin-top: 10px;
+}
+
+.order-title {
+    color: rgb(237,171,57);
+    /* font-size: 20px; */
+}
+
+.order-title::after {
+    display: block;
+    content: "";
+    width: inherit;
+    height: 2px;
+    background-color: rgb(154,154,154);
+    margin-top: 20px;
 }
 
 /*--------------- Order -> Info ---------------*/
@@ -149,7 +183,7 @@ h1 {
 .order-info-annouce {
     width: 360px;
     text-align: left;
-    color: var(--light-orange);
+    color: rgb(235, 128, 92);
     display: none;
 }
 
@@ -162,10 +196,22 @@ input[type="radio"] {
     margin: auto;
 }
 
-.order-button {
+/*--------------- Order -> button ---------------*/
+
+#order-button {
     display: flex;
     justify-content: center;
     margin-top: 10px;
+}
+
+#order-button-register, #order-button-delete {
+    background: transparent;
+    border: 1px solid rgb(233, 144, 49);
+    margin-right: 5px;
+}
+
+#order-button-register:hover, #order-button-delete:hover {
+    cursor: pointer;
 }
 
 /*--------------- Order -> Product ---------------*/
@@ -188,7 +234,7 @@ input[type="radio"] {
 }
 
 .selected {
-    background-color: var(--orange);
+    background-color: rgb(255, 161, 57);
 }
 
 .order-product-item-thumnail {
@@ -204,8 +250,8 @@ input[type="radio"] {
 
 .order-product-item-price {
     font-size: 18px;
-    font-weight: 600;
-    color: var(--orange);
+    font-weight: bold;
+    color: rgb(227, 78, 100);
     padding-right: 5px;
 }
 
@@ -214,8 +260,9 @@ input[type="radio"] {
 }
 
 .order-product-list-title {
-    color: var(--light-orange);
+    color: rgb(233, 144, 49);
     text-align: right;
+    font-weight: 600;
 }
 
 #order-product-list-wrapper {
@@ -234,7 +281,8 @@ input[type="radio"] {
 }
 
 .order-product-selected-title {
-    color: var(--light-orange);
+    font-weight: 600;
+    color: rgb(233, 144, 49);
     text-align: left;
 }
 
@@ -243,8 +291,8 @@ input[type="radio"] {
     border: .5px solid;
     padding: 3px;
     overflow-y: scroll;
-    background-color: var(--light-blue);
-    border: .5px solid var(--light-orange);
+    background-color: rgb(244, 254, 255);
+    border: .5px solid rgb(233, 144, 49);
 }
 
 #order-product-button {
@@ -253,10 +301,45 @@ input[type="radio"] {
 }
 
 .order-product-button-item {
-    border: 2px solid var(--light-orange);
+    border: 1px solid rgb(233, 144, 49);
     margin: 5px 8px;
 }
 
 .order-product-button-item:hover {
     cursor: pointer;
+}
+
+/*--------------- Order -> Customer ---------------*/
+#order-customer {
+    width: 100%;
+    margin-top: 10px;
+}
+
+thead {
+    color: white;
+    background-color: rgb(233, 144, 49);
+}
+
+td {
+    padding: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: rgb(248, 228, 183);
+}
+
+#order-customer-name {
+    width: 30%;
+}
+
+#order-customer-address {
+    width: 20%;
+}
+
+#order-customer-sex {
+    width: 10%;
+}
+
+.order-customer--align-left {
+    text-align: left;
 }
