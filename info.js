@@ -78,7 +78,6 @@ function checkInput(orderInfoInput)
     var flag = true;
     orderInfoInput.forEach(input => {
         var invalidString = checkValidInput(input.name, input.value);
-        // console.log(invalidString);
         if (invalidString!=null) {
             flag = false;
         }
