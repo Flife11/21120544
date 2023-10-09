@@ -1,13 +1,14 @@
+import { handleClickMoveAllLeft } from "./product.js";
+
 function dateCompare(value)
 {
-    console.log(value);
-    const date = value.splt("-");
-    const curDate = Date();
-    if (date[0]==curDate.getFullYear()) {
-        if (date[1]==curDate.getMonth()+1) {
-            return (date[2]>=curDate.getDate()) 
-        } else return (date[1]>=curDate.getMonth()+1);
-    } else return (date[0]>=curDate.getFullYear());
+    const date = value.split("-");
+    const curDate = new Date();
+    if (parseInt(date[0])==curDate.getFullYear()) {
+        if (parseInt(date[1])==curDate.getMonth()+1) {
+            return (parseInt(date[2])>=curDate.getDate()) 
+        } else return (parseInt(date[1])>=curDate.getMonth()+1);
+    } else return (parseInt(date[0])>=curDate.getFullYear());
 }
 
 function checkValidInput(name, value)
@@ -33,7 +34,6 @@ function checkValidInput(name, value)
         if (!dateCompare(value)) return "*Ngày giao hàng không được trước ngày hiện tại";
     }
     if (name=="email") {
-        console.log(value, name);
         const emailRegex = new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm");
         if (emailRegex.test(value)==false) return "*Email không hợp lệ";
     }
@@ -55,4 +55,89 @@ export function handleValidInfo()
             input.style.borderColor = "black";
         }
     });
+}
+
+function Delete()
+{
+    handleClickMoveAllLeft();
+    const orderInfoInput = document.querySelectorAll(".order-info-input");
+    orderInfoInput.forEach(input => {
+        if (input.children.length==0) input.value = "";
+        else {
+            var sexRadio = document.getElementsByName("sex");
+            sexRadio[0].checked = false;
+            sexRadio[1].checked = false;
+        }
+    });
+}
+
+export function handleRegister()
+{
+    // Check valid input
+    const orderInfoInput = document.querySelectorAll(".order-info-input");
+    orderInfoInput.forEach(input => {
+        var invalidString = checkValidInput(input.name, input.value);
+        if (invalidString!=null) {
+            return;
+        }
+    });
+
+    // Check empty product list
+    var productSelected = document.getElementById("order-product-selected-wrapper");
+    if (productSelected.children.length==0) {
+        var announcement = document.getElementById("order-product-announcement")
+        var announcementStyle = getComputedStyle(announcement);
+        console.log(announcementStyle.display);
+        if (announcementStyle.display=="none") {
+            announcement.style.display = "block"
+            announcement.innerHTML = "*Vui lòng chọn sản phẩm cần mua";
+        } else announcement.style.display = "none";
+        return;
+    }
+
+    // Add data from input to table
+    // Get input value
+    var table = document.getElementById("order-customer");
+    const inputValue = [];
+    orderInfoInput.forEach(input => {
+        if (input.name==undefined) {
+            var sexRadio = document.getElementsByName("sex");
+            if (sexRadio[0].checked) inputValue.push(sexRadio[0].value);
+            else inputValue.push(sexRadio[1].value);
+        } else inputValue.push(input.value);
+    });
+
+    // Get product value
+    const productValue = [];
+    for (let i=0; i<productSelected.children.length; ++i) {
+        var element = productSelected.children[i];
+        productValue.push(element.children[1].innerHTML);
+    }
+
+    const html=`<td class="order-customer--align-left">${inputValue[0]}</td>
+                <td>${inputValue[3]}</td>
+                <td class="order-customer--align-left">${inputValue[1]}</td>
+                <td>${inputValue[4].split("-").reverse().join("/")}</td>
+                <td class="order-customer--align-left">${productValue.join("; ")}</td>`
+    
+    var newtr = document.createElement("tr");
+    newtr.innerHTML = html;
+    newtr.className = "newRegister";
+
+    table.appendChild(newtr);
+
+    //Delete input and product selected list
+    Delete();
+}
+
+export function handleDelete()
+{
+    const table = document.getElementById("order-customer");
+    var index = 0;
+    while (table.children.length!=0) {
+        element = table.children[index];
+        if (element.className=="newRegister") {
+            table.removeChild(element);
+        } else index += 1;
+    }
 }

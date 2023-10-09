@@ -1,7 +1,6 @@
 export function handleDragStart(e) 
 {
     var id = this.parentNode.id;
-    console.log(id);
     e.dataTransfer.setData("text", id);
 }
 

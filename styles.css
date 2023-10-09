@@ -180,7 +180,7 @@ h1 {
     padding-right: 5px;
 }
 
-.order-info-annouce {
+.order-info-announcement {
     width: 360px;
     text-align: left;
     color: rgb(235, 128, 92);
@@ -309,6 +309,12 @@ input[type="radio"] {
     cursor: pointer;
 }
 
+#order-product-announcement {
+    text-align: center;
+    color: rgb(235, 128, 92);
+    display: none;
+}
+
 /*--------------- Order -> Customer ---------------*/
 #order-customer {
     width: 100%;
@@ -342,4 +348,31 @@ tr:nth-child(even) {
 
 .order-customer--align-left {
     text-align: left;
+}
+
+/*--------------- Footer ---------------*/
+
+#footer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: rgb(248, 228, 183);
+    color: rgb(237,171,57);
+    border: 1px solid rgb(237,171,57);
+    text-decoration: underline;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.footer-selected {
+    background-color: rgb(237,171,57);
+    color: white;
+}
+
+.footer-menu:hover {
+    cursor: pointer;
+}
+
+.orange {
+    background-color: rgb(237,171,57);
 }

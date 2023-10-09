@@ -65,9 +65,23 @@ function productEvent()
     allRight.addEventListener("click", product.handleClickMoveAllRight);
     allLeft.addEventListener("click", product.handleClickMoveAllLeft);
 
+    // Register and Delete product with button
+    var register = document.getElementById("order-button-register");
+    var del = document.getElementById("order-button-delete");
+    register.addEventListener("click", info.handleRegister);
+    del.addEventListener("click", info.handleDelete);
+}
+
+function footerEvent()
+{
+    const menuList = document.querySelectorAll(".footer-menu");
+    menuList.forEach(element => {
+        element.addEventListener("click", nav.handleClick);
+    });
 }
 
 navbarEvent();
 sidebarEvent();
 buttonEvent();
 productEvent();
+footerEvent();
