@@ -181,6 +181,7 @@ h1 {
     padding-right: 5px;
 }
 
+
 .order-info-announcement {
     width: 360px;
     text-align: left;
@@ -191,6 +192,7 @@ h1 {
 .order-info-input {
     display: flex;
     width: 350px;
+    padding: 3px;
 }
 
 input[type="radio"] {
