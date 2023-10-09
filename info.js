@@ -15,14 +15,15 @@ function checkValidInput(name, value)
 {
     if (name=="name") {
         if (value.length==0) return "*Họ và tên chưa được điền";
-        if (!value.includes(" ")) return "*Họ và tên chưa hợp lệ";
+        if (!value.includes(" ") || value[value.length-1]==" ") return "*Họ và tên chưa hợp lệ";
     }
     if (name=="address") {
         if (value.length==0) return "*Địa chỉ chưa được điền";
-        if (!value.includes(" ")) return "*Địa chỉ chưa hợp lệ";
+        if (!value.includes(" ") || value[value.length-1]==" ") return "*Địa chỉ chưa hợp lệ";
     }
     if (name=="phoneNumber") {
         if (value.length!=10) return "*Số điện thoại phải có đủ 10 ký số";
+        if (!/^[0-9]*$/.test(value)) return "*Số điện thoại phải là ký số";
         if (value[0]!='0') return "*Số điện thoại phải bắt đầu bằng chữ số 0";
     }
     if (name==undefined) {
@@ -34,6 +35,7 @@ function checkValidInput(name, value)
         if (!dateCompare(value)) return "*Ngày giao hàng không được trước ngày hiện tại";
     }
     if (name=="email") {
+        if (value.length==0) return "*Vui lòng nhập Email";
         const emailRegex = new RegExp(/^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/, "gm");
         if (emailRegex.test(value)==false) return "*Email không hợp lệ";
     }
@@ -71,29 +73,43 @@ function Delete()
     });
 }
 
-export function handleRegister()
+function checkInput(orderInfoInput)
 {
-    // Check valid input
-    const orderInfoInput = document.querySelectorAll(".order-info-input");
+    var flag = true;
     orderInfoInput.forEach(input => {
         var invalidString = checkValidInput(input.name, input.value);
+        // console.log(invalidString);
         if (invalidString!=null) {
-            return;
+            flag = false;
         }
     });
+    return flag;
+}
 
-    // Check empty product list
-    var productSelected = document.getElementById("order-product-selected-wrapper");
+function checkProductList(productSelected)
+{
+    var flag = true;
     if (productSelected.children.length==0) {
         var announcement = document.getElementById("order-product-announcement")
         var announcementStyle = getComputedStyle(announcement);
-        console.log(announcementStyle.display);
         if (announcementStyle.display=="none") {
             announcement.style.display = "block"
             announcement.innerHTML = "*Vui lòng chọn sản phẩm cần mua";
         } else announcement.style.display = "none";
-        return;
+        flag = false;
     }
+    return flag;
+}
+
+export function handleRegister()
+{
+    // Check valid input
+    const orderInfoInput = document.querySelectorAll(".order-info-input");
+    if (!checkInput(orderInfoInput)) return;
+
+    // Check empty product list
+    var productSelected = document.getElementById("order-product-selected-wrapper");
+    if (!checkProductList(productSelected)) return;
 
     // Add data from input to table
     // Get input value
@@ -134,8 +150,8 @@ export function handleDelete()
 {
     const table = document.getElementById("order-customer");
     var index = 0;
-    while (table.children.length!=0) {
-        element = table.children[index];
+    while (index<table.children.length) {
+        var element = table.children[index];
         if (element.className=="newRegister") {
             table.removeChild(element);
         } else index += 1;
